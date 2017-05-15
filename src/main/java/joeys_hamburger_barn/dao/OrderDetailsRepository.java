@@ -9,6 +9,5 @@ import joeys_hamburger_barn.models.OrderDetails;
 
 @Repository
 public interface OrderDetailsRepository extends CrudRepository<OrderDetails, String> {
-	@Override
-	public List<OrderDetails> findAll();
+	public List<OrderDetails> findAllByOrderByTimestampDesc();
 }

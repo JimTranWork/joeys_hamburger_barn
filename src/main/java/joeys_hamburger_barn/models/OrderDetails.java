@@ -11,7 +11,7 @@ import joeys_hamburger_barn.models.superclass.Object;
  * @author Spit Ice
  *
  */
-@Entity
+@Entity(name = "OrderDetails")
 public class OrderDetails extends Object {
 
 	private String order_id;
@@ -26,8 +26,8 @@ public class OrderDetails extends Object {
 
 	}
 
-	public OrderDetails(String order_id, String order_made_by, String item_id, String item_name, double item_price,
-			int total_quantity, double total_amount) {
+	public OrderDetails(final String order_id, final String order_made_by, final String item_id, final String item_name,
+			final double item_price, final int total_quantity, final double total_amount) {
 		super();
 		this.order_id = order_id;
 		this.order_made_by = order_made_by;
@@ -39,61 +39,59 @@ public class OrderDetails extends Object {
 	}
 
 	public String getOrder_id() {
-		return order_id;
+		return this.order_id;
 	}
 
-	public void setOrder_id(String order_id) {
+	public void setOrder_id(final String order_id) {
 		this.order_id = order_id;
 	}
 
 	public String getOrder_made_by() {
-		return order_made_by;
+		return this.order_made_by;
 	}
 
-	public void setOrder_made_by(String order_made_by) {
+	public void setOrder_made_by(final String order_made_by) {
 		this.order_made_by = order_made_by;
 	}
 
 	public String getItem_id() {
-		return item_id;
+		return this.item_id;
 	}
 
-	public void setItem_id(String item_id) {
+	public void setItem_id(final String item_id) {
 		this.item_id = item_id;
 	}
 
 	public String getItem_name() {
-		return item_name;
+		return this.item_name;
 	}
 
-	public void setItem_name(String item_name) {
+	public void setItem_name(final String item_name) {
 		this.item_name = item_name;
 	}
 
 	public double getItem_price() {
-		return item_price;
+		return this.item_price;
 	}
 
-	public void setItem_price(double item_price) {
+	public void setItem_price(final double item_price) {
 		this.item_price = item_price;
 	}
 
 	public int getTotal_quantity() {
-		return total_quantity;
+		return this.total_quantity;
 	}
 
-	public void setTotal_quantity(int total_quantity) {
+	public void setTotal_quantity(final int total_quantity) {
 		this.total_quantity = total_quantity;
 	}
 
 	public double getTotal_amount() {
-		return total_amount;
+		return this.total_amount;
 	}
 
-	public void setTotal_amount(double total_amount) {
+	public void setTotal_amount(final double total_amount) {
 		this.total_amount = total_amount;
 	}
-
-
 
 }

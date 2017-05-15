@@ -11,7 +11,7 @@ public class Object {
 
 	@Id
 	private String id = UUID.randomUUID().toString();
-	private Timestamp created_at = new Timestamp(System.currentTimeMillis());
+	private Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
 	public Object() {
 
@@ -25,12 +25,12 @@ public class Object {
 		this.id = id;
 	}
 
-	public Timestamp getCreated_at() {
-		return this.created_at;
+	public Timestamp getTimestamp() {
+		return this.timestamp;
 	}
 
-	public void setCreated_at(final Timestamp created_at) {
-		this.created_at = created_at;
+	public void setTimestamp(final Timestamp timestamp) {
+		this.timestamp = timestamp;
 	}
 
 }

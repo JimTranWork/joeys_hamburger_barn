@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import joeys_hamburger_barn.models.CustomerOrder;
 
 @Repository
-public interface OrderRepository extends CrudRepository<CustomerOrder, String> {
+public interface CustomerOrderRepository extends CrudRepository<CustomerOrder, String> {
 
 }

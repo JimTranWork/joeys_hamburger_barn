@@ -60,7 +60,7 @@
 				<tr>
 					<td>Please select customer's item choice:</td>
 					<td><select ng-model="selectedItem"
-						ng-change="selectedItemUpdated()" style="width:100%;">
+						ng-change="selectedItemUpdated()" style="width: 100%;">
 							<option value="">Select an item</option>
 							<option ng-repeat="item in itemList" value="{{item}}">{{item.name}}</option>
 					</select></td>
@@ -69,15 +69,17 @@
 				<tr>
 					<td>Please input amount of selected item:</td>
 					<td><input type="number" ng-model="quantity"
-						ng-init="quantity=1" ng-change="inputAmountUpdated()" style="width:100%;"></input></td>
+						ng-init="quantity=1" ng-change="inputAmountUpdated()"
+						style="width: 100%;"></input></td>
 				</tr>
 			</table>
 		</div>
 
 
 		<div>
-			<button class="btn btn-primary" ng-click="addItemToItemOrderList()">Add
-				item to order</button>
+			<button class="btn btn-primary" ng-click="addItemToItemOrderList()"
+				style="margin-top: 10px; margin-bottom: 10px;">Add item
+				to order</button>
 		</div>
 
 	</div>
@@ -88,7 +90,7 @@
 
 		<h2>Current order:</h2>
 
-		<table border="1" width="50%">
+		<table border="1" width="100%">
 			<tr>
 				<td>Item</td>
 				<td>Price</td>
@@ -105,28 +107,31 @@
 						this item</button></td>
 			</tr>
 			<tr>
-				<td><h3>Grand total</h3></td>
-				<td><h3>${{grandTotal}}</h3></td>
+				<td><h3>Order total</h3></td>
+				<td><h3>${{orderTotal}}</h3></td>
 			</tr>
 		</table>
 	</div>
 
-<div>Status: {{status}}</div>
+	<div><h3>Status: {{status}}</h3></div>
 
 	<div>
-		<button class="btn btn-primary" ng-click="confirmOrder()">Confirm
+		<button class="btn btn-primary" ng-click="confirmOrder()"
+			style="margin-top: 10px; margin-bottom: 10px;">Confirm
 			order</button>
-		<button class="btn btn-primary" ng-click="clearOrder()">Clear
-			order</button>
+		<button class="btn btn-primary" ng-click="clearOrder()"
+			style="margin-top: 10px; margin-bottom: 10px;">Clear order</button>
 	</div>
 	<hr>
 
 	<div>
-		<h2>View today's revenue:</h2>
-		<button class="btn btn-primary" ng-click="getOrderDetailsList()">View</button>
-		<table border="1" width="50%">
+		<h2>View total revenue:</h2>
+		<button class="btn btn-primary" ng-click="getOrderDetailsList()"
+			style="margin-top: 10px; margin-bottom: 10px;">View</button>
+		<table border="1" width="100%">
 			<tr>
 				<td>Sold by</td>
+				<td>Sold at</td>
 				<td>Item</td>
 				<td>Price</td>
 				<td>Quantity</td>
@@ -134,14 +139,15 @@
 			</tr>
 			<tr ng-repeat="orderDetails in orderDetailsList">
 				<td>{{orderDetails.order_made_by}}</td>
+				<td>{{orderDetails.timestamp | date:'yyyy-MM-dd HH:mm'}}</td>
 				<td>{{orderDetails.item_name}}</td>
 				<td>${{orderDetails.item_price}}</td>
 				<td>{{orderDetails.total_quantity}} piece(s)</td>
 				<td>${{orderDetails.total_amount}}</td>
 			</tr>
 			<tr>
-				<td><h3>Grand total</h3></td>
-				<td><h3>${{grandTotalAmount}}</h3></td>
+				<td><h3>All orders total</h3></td>
+				<td><h3>${{allOrdersTotal}}</h3></td>
 			</tr>
 		</table>
 	</div>
