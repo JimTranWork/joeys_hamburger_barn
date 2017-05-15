@@ -12,17 +12,12 @@ import joeys_hamburger_barn.models.superclass.Object;
  *
  */
 @Entity
-public class Order extends Object {
+public class CustomerOrder extends Object {
 
 	private String made_by = "Joey";
 
-	public Order() {
+	public CustomerOrder() {
 
-	}
-
-	public Order(final String made_by) {
-		super();
-		this.made_by = made_by;
 	}
 
 	public String getMade_by() {

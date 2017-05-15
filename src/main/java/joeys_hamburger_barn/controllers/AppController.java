@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.RestController;
 import joeys_hamburger_barn.dao.ItemRepository;
 import joeys_hamburger_barn.dao.OrderDetailsRepository;
 import joeys_hamburger_barn.dao.OrderRepository;
+import joeys_hamburger_barn.models.CustomerOrder;
 import joeys_hamburger_barn.models.Item;
-import joeys_hamburger_barn.models.Order;
 import joeys_hamburger_barn.models.OrderDetails;
 
 @RestController
-public class OrderController {
+public class AppController {
 
 	private final ItemRepository itemRepository;
 	private final OrderRepository orderRepository;
 	private final OrderDetailsRepository orderDetailsRepository;
 
 	@Autowired
-	public OrderController(final ItemRepository itemRepository, final OrderRepository orderRepository,
+	public AppController(final ItemRepository itemRepository, final OrderRepository orderRepository,
 			final OrderDetailsRepository orderDetailsRepository) {
 		this.itemRepository = itemRepository;
 		this.orderRepository = orderRepository;
@@ -40,13 +40,18 @@ public class OrderController {
 	}
 
 	@RequestMapping("/order/create")
-	public Order createOrder(@ModelAttribute final Order order) {
-		return this.orderRepository.save(order);
+	public CustomerOrder createOrder() {
+		return this.orderRepository.save(new CustomerOrder());
 	}
 
 	@RequestMapping("/order/details/add")
-	public void addOrderDetails(@ModelAttribute final OrderDetails orderDetails) {
-		this.orderDetailsRepository.save(orderDetails);
+	public OrderDetails addOrderDetails(@ModelAttribute final OrderDetails orderDetails) {
+		return this.orderDetailsRepository.save(orderDetails);
+	}
+
+	@RequestMapping("order/all")
+	public List<OrderDetails> listOrderDetails() {
+		return this.orderDetailsRepository.findAll();
 	}
 
 }

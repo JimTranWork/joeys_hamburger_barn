@@ -14,7 +14,7 @@ public class SourceConfig {
 	@Primary
 	public DataSource dataSource() {
 		final EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-		final EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.HSQL).build();
+		final EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.DERBY).build();
 		return db;
 	}
 
