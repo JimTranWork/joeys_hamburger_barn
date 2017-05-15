@@ -3,15 +3,23 @@
  */
 package joeys_hamburger_barn.models.superclass;
 
+import javax.persistence.MappedSuperclass;
+
 /**
  * @author Spit Ice
  *
  */
+
+@MappedSuperclass
 public class Item extends Object {
 
 	private String name;
 	private long price;
 
+	public Item() {
+		
+	}
+	
 	public Item(final String name, final long price) {
 		super();
 		this.name = name;
