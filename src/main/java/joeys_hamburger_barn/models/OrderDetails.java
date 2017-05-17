@@ -3,21 +3,30 @@
  */
 package joeys_hamburger_barn.models;
 
+import javax.persistence.Entity;
+
+import joeys_hamburger_barn.models.superclass.Object;
+
 /**
  * @author Spit Ice
  *
  */
-public class OrderDetails {
+@Entity
+public class OrderDetails extends Object {
 
 	private String order_id;
 	private String item_id;
-	private int item_quantity;
+	private int total_quantity;
 
-	public OrderDetails(final String order_id, final String item_id, final int item_quantity) {
+	public OrderDetails() {
+
+	}
+
+	public OrderDetails(final String order_id, final String item_id, final int total_quantity) {
 		super();
 		this.order_id = order_id;
 		this.item_id = item_id;
-		this.item_quantity = item_quantity;
+		this.total_quantity = total_quantity;
 	}
 
 	public String getOrder_id() {
@@ -36,12 +45,12 @@ public class OrderDetails {
 		this.item_id = item_id;
 	}
 
-	public int getItem_quantity() {
-		return this.item_quantity;
+	public int getTotal_quantity() {
+		return this.total_quantity;
 	}
 
-	public void setItem_quantity(final int item_quantity) {
-		this.item_quantity = item_quantity;
+	public void setTotal_quantity(final int total_quantity) {
+		this.total_quantity = total_quantity;
 	}
 
 }

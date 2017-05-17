@@ -3,21 +3,30 @@ package joeys_hamburger_barn.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import joeys_hamburger_barn.dao.DrinkDAO;
-import joeys_hamburger_barn.dao.DrinkRepository;
-import joeys_hamburger_barn.models.Drink;
+import joeys_hamburger_barn.dao.ItemRepository;
+import joeys_hamburger_barn.dao.OrderDetailsRepository;
+import joeys_hamburger_barn.dao.OrderRepository;
+import joeys_hamburger_barn.models.Item;
+import joeys_hamburger_barn.models.Order;
+import joeys_hamburger_barn.models.OrderDetails;
 
 @RestController
 public class OrderController {
 
-	private DrinkRepository repository;
-	
+	private final ItemRepository itemRepository;
+	private final OrderRepository orderRepository;
+	private final OrderDetailsRepository orderDetailsRepository;
+
 	@Autowired
-	public OrderController(DrinkRepository repository) {
-		this.repository = repository;
+	public OrderController(final ItemRepository itemRepository, final OrderRepository orderRepository,
+			final OrderDetailsRepository orderDetailsRepository) {
+		this.itemRepository = itemRepository;
+		this.orderRepository = orderRepository;
+		this.orderDetailsRepository = orderDetailsRepository;
 	}
 
 	@RequestMapping("/hello")
@@ -25,9 +34,19 @@ public class OrderController {
 		return "Hello!";
 	}
 
-	@RequestMapping("/drink/all")
-	public List<Drink> drinkFindAll() {
-		return repository.findAll();
+	@RequestMapping("/item/all")
+	public List<Item> listItems() {
+		return this.itemRepository.findAll();
+	}
+
+	@RequestMapping("/order/create")
+	public Order createOrder(@ModelAttribute final Order order) {
+		return this.orderRepository.save(order);
+	}
+
+	@RequestMapping("/order/details/add")
+	public void addOrderDetails(@ModelAttribute final OrderDetails orderDetails) {
+		this.orderDetailsRepository.save(orderDetails);
 	}
 
 }
